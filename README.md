@@ -42,3 +42,7 @@ uses JavaScript (AJAX) to load all banners and postscribe.js to place the banner
 ## Support and updates
 
 The extension is hosted on GitHub. Please report feedback, bugs and change-requests directly at https://github.com/derhansen/sf_banners
+
+## Reporting a Vulnerability
+
+Please report vulnerabilities to [security@typo3.org](mailto:security@typo3.org).
