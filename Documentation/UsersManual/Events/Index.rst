@@ -1,4 +1,4 @@
-﻿
+
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -15,17 +15,11 @@
 .. role::   php(code)
 
 
-Users manual
-------------
+Events
+^^^^^^
 
+.. csv-table:: Events
+   :header: "Event class", "Fired in class", "Access to"
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
-
-   Installation/Index
-   UsingTheExtensionByTyposcript/Index
-   SettingsForBanners/Index
-   Events/Index
-
+   "AfterBannerImpressionsIncreasedEvent", "BannerController", "getBanner()"
+   "AfterBannerClicksIncreasedEvent", "BannerController", "getBanner()"
