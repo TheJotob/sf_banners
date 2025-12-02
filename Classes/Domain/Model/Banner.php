@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Domain\Model;
 
+use DERHANSEN\SfBanners\Event\AfterBannerClicksIncreasedEvent;
+use DERHANSEN\SfBanners\Event\AfterBannerImpressionsIncreasedEvent;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\LinkHandling\TypoLinkCodecService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
@@ -49,7 +52,9 @@ class Banner extends AbstractEntity
      */
     protected ObjectStorage $excludepages;
 
-    public function __construct()
+    public function __construct(
+        private readonly EventDispatcherInterface $eventDispatcher
+    )
     {
         $this->initializeObject();
     }
@@ -213,6 +218,7 @@ class Banner extends AbstractEntity
     public function increaseImpressions(): void
     {
         $this->impressions += 1;
+        $this->eventDispatcher->dispatch(new AfterBannerImpressionsIncreasedEvent($this));
     }
 
     /**
@@ -221,6 +227,7 @@ class Banner extends AbstractEntity
     public function increaseClicks(): void
     {
         $this->clicks += 1;
+        $this->eventDispatcher->dispatch(new AfterBannerClicksIncreasedEvent($this));
     }
 
     public function getLinkUrl(): string
