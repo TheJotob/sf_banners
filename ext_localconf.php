@@ -11,11 +11,11 @@ ExtensionUtility::configurePlugin(
     'sf_banners',
     'Pi1',
     [
-        BannerController::class => 'show,getBanners,click',
+        BannerController::class => ['show', 'getBanners', 'click'],
     ],
     /* non-cacheable actions */
     [
-        BannerController::class => 'getBanners,click',
+        BannerController::class => ['getBanners', 'click'],
     ],
     ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
